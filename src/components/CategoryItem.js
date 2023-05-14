@@ -1,4 +1,4 @@
-import styles from "../styles/CategoryItem.module.css";
+import styles from "../styles/components/CategoryItem.module.css";
 
 import React from "react";
 

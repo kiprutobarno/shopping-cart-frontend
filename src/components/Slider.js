@@ -1,6 +1,6 @@
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
-import styles from "../styles/Slider.module.css";
+import styles from "../styles/components/Slider.module.css";
 import { sliderItems } from "../data/db";
 import { useState } from "react";
 

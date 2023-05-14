@@ -1,4 +1,4 @@
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/components/Footer.module.css";
 import Facebook from "@mui/icons-material/FacebookOutlined";
 import Instagram from "@mui/icons-material/Instagram";
 import Twitter from "@mui/icons-material/Twitter";

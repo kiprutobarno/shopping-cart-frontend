@@ -1,7 +1,7 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import styles from "../styles/Product.module.css";
+import styles from "../styles/components/Product.module.css";
 const Product = ({ product }) => {
   return (
     <div className={styles.container}>

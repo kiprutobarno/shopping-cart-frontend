@@ -1,4 +1,4 @@
-import styles from "../styles/Categories.module.css";
+import styles from "../styles/components/Categories.module.css";
 import { categories } from "../data/db";
 import CategoryItem from "./CategoryItem";
 

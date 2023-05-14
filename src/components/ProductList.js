@@ -1,6 +1,6 @@
 import { popularProducts } from "../data/db";
 import Product from "./Product";
-import styles from "../styles/ProductList.module.css";
+import styles from "../styles/components/ProductList.module.css";
 
 const ProductList = () => {
   return (

@@ -1,4 +1,4 @@
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/components/Navbar.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";

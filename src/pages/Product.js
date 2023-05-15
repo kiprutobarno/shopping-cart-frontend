@@ -5,13 +5,32 @@ import styles from "../styles/pages/Product.module.css";
 import { useLocation } from "react-router-dom";
 import Remove from "@mui/icons-material/Remove";
 import Add from "@mui/icons-material/Add";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-  const [colors, setColors] = useState([]);
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/api/v1/products/${id}`
+        );
+        setProduct(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProduct();
+  }, [id]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -28,7 +47,7 @@ const Product = () => {
   }, [id]);
 
   const handleColor = (col) => {
-    setColors(col);
+    setColor(col);
   };
 
   const handleQuantity = (type) => {
@@ -37,6 +56,14 @@ const Product = () => {
     } else {
       setQuantity(quantity + 1);
     }
+  };
+
+  const handleSize = (e) => {
+    setSize(e.target.value);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
   return (
@@ -65,7 +92,7 @@ const Product = () => {
             </div>
             <div className={styles.filter}>
               <span className={styles.filterTitle}>Size</span>
-              <select className={styles.sizeFilter}>
+              <select className={styles.sizeFilter} onChange={handleSize}>
                 {product.size?.map((size) => (
                   <option key={size}>{size}</option>
                 ))}
@@ -78,6 +105,9 @@ const Product = () => {
               <span className={styles.amount}>{quantity}</span>
               <Add onClick={() => handleQuantity("increase")} />
             </div>
+            <button onClick={handleAddToCart} className={styles.button}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

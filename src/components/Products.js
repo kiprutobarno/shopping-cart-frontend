@@ -1,15 +1,15 @@
 import { popularProducts } from "../data/db";
 import Product from "./Product";
-import styles from "../styles/components/ProductList.module.css";
+import styles from "../styles/components/Products.module.css";
 
-const ProductList = () => {
+const Products = () => {
   return (
     <div className={styles.container}>
       {popularProducts.map((product) => (
-        <Product product={product} />
+        <Product product={product} key={product.id} />
       ))}
     </div>
   );
 };
 
-export default ProductList;
+export default Products;

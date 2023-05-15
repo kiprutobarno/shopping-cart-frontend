@@ -5,7 +5,6 @@ import styles from "../styles/components/Product.module.css";
 const Product = ({ product }) => {
   return (
     <div className={styles.container}>
-      {/* <div className={styles.circle}></div> */}
       <img src={product.img} className={styles.img} />
       <div className={styles.info}>
         <div className={styles.icon}>

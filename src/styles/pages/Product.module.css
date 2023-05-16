@@ -6,8 +6,8 @@
 .imgContainer {
   flex: 1;
   display: flex;
-  border: 0.5px purple dotted;
-  justify-content: center;
+  /* border: 0.5px purple dotted; */
+  justify-content: flex-start;
 }
 
 .img {
@@ -19,7 +19,7 @@
 .infoContainer {
   flex: 1;
   padding: 0 20px;
-  border: 0.5px green dotted;
+  /* border: 0.5px green dotted; */
 }
 
 .title {

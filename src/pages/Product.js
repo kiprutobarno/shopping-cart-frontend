@@ -32,20 +32,6 @@ const Product = () => {
     getProduct();
   }, [id]);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:8000/api/v1/products/${id}`
-        );
-        setProduct(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProduct();
-  }, [id]);
-
   const handleColor = (col) => {
     setColor(col);
   };

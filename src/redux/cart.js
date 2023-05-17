@@ -1,7 +1,7 @@
 const CART_ITEM_ADDED = "CART_ITEM_ADDED";
 
 const initialState = {
-  product: [],
+  products: [],
   quantity: 0,
   total: 0,
 };
@@ -11,7 +11,7 @@ export const cartReducer = (state = initialState, action) => {
     case CART_ITEM_ADDED:
       return {
         ...state,
-        product: [...state.product, action.payload],
+        products: [...state.products, action.payload],
         quantity: state.quantity + 1,
         total: (state.total += action.payload.quantity * action.payload.price),
       };

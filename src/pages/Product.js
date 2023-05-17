@@ -40,7 +40,6 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    // dispatch(action.addCartItem({ ...product, quantity, color, size }));
     dispatch(addCartItem({ ...product, quantity, color, size }));
   };
 

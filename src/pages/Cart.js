@@ -38,9 +38,15 @@ const Cart = () => {
                     <span>
                       <b>ID:</b> {product._id}
                     </span>
-                    <span className={styles.productColor}></span>
+                    <span className={styles.colorSpan}>
+                      <b>Color:</b>
+                      <div
+                        className={styles.productColor}
+                        style={{ backgroundColor: product.color }}
+                      />
+                    </span>
                     <span>
-                      <b>{product.size}:</b> M
+                      <b>Size:</b> {product.size}
                     </span>
                   </div>
                 </div>

@@ -67,9 +67,16 @@
 }
 
 .productColor {
-  width: 20px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
+}
+
+.colorSpan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
 .priceDetails {

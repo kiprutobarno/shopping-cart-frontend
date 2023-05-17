@@ -1,36 +1,27 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import styles from "../styles/pages/Product.module.css";
 import { useLocation } from "react-router-dom";
 import Remove from "@mui/icons-material/Remove";
 import Add from "@mui/icons-material/Add";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct } from "../redux/product";
+import { addCartItem } from "../redux/cart";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [product, setProduct] = useState({});
   const [color, setColor] = useState([]);
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState(1);
 
+  const product = useSelector((state) => state.product);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:8000/api/v1/products/${id}`
-        );
-        setProduct(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProduct();
-  }, [id]);
+    dispatch(fetchProduct(id));
+  }, []);
 
   const handleColor = (col) => {
     setColor(col);
@@ -49,7 +40,8 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addProduct({ ...product, quantity, color, size }));
+    // dispatch(action.addCartItem({ ...product, quantity, color, size }));
+    dispatch(addCartItem({ ...product, quantity, color, size }));
   };
 
   return (

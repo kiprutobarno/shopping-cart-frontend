@@ -11,6 +11,7 @@ import persistStore from "redux-persist/es/persistStore";
 
 import { cartReducer } from "./cartReducer";
 import { productReducer } from "./productReducer";
+import { productsReducer } from "./productsReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   product: productReducer,
+  products: productsReducer,
   cart: cartReducer,
 });
 

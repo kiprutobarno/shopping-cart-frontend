@@ -1,12 +1,24 @@
-import { popularProducts } from "../data/db";
 import Product from "./Product";
 import styles from "../styles/components/Products.module.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/actions";
 
 const Products = () => {
+  const products = useSelector((state) => state.products);
+
+  console.log(products);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <div className={styles.container}>
-      {popularProducts.map((product) => (
-        <Product product={product} key={product.id} />
+      {products?.map((product) => (
+        <Product product={product} key={product._id} />
       ))}
     </div>
   );

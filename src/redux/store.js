@@ -2,14 +2,17 @@ import {
   combineReducers,
   legacy_createStore as createStore,
   applyMiddleware,
+  compose,
 } from "redux";
 import thunk from "redux-thunk";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-
-import { productReducer } from "./product";
-import { cartReducer } from "./cart";
 import persistStore from "redux-persist/es/persistStore";
+
+import { cartReducer } from "./cartReducer";
+import { productReducer } from "./productReducer";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistConfig = {
   key: "root",
@@ -23,7 +26,10 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, applyMiddleware(thunk));
+const store = createStore(
+  persistedReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 const persistor = persistStore(store);
 
 export { persistor, store };

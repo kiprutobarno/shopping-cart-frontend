@@ -2,12 +2,23 @@ import styles from "../styles/pages/Cart.module.css";
 import Navbar from "../components/Navbar";
 import Remove from "@mui/icons-material/Remove";
 import Add from "@mui/icons-material/Add";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { increaseQuantity, decreaseQuantity } from "../redux/actions";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
+  const dispatch = useDispatch();
+
   const { products, total } = cart;
+
+  const handleQuantity = (type, product) => {
+    if (type === "decrease") {
+      dispatch(decreaseQuantity(product));
+    } else {
+      dispatch(increaseQuantity(product));
+    }
+  };
 
   return (
     <div>
@@ -52,11 +63,13 @@ const Cart = () => {
                 </div>
                 <div className={styles.priceDetails}>
                   <div className={styles.productAmountContainer}>
-                    <Remove />
+                    <Remove
+                      onClick={() => handleQuantity("decrease", product)}
+                    />
                     <div className={styles.productAmount}>
                       {product.quantity}
                     </div>
-                    <Add />
+                    <Add onClick={() => handleQuantity("increase", product)} />
                   </div>
                   <div className={styles.productPrice}>
                     Ksh {product.quantity * product.price}

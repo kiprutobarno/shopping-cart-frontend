@@ -5,14 +5,13 @@ import { useLocation } from "react-router-dom";
 import Remove from "@mui/icons-material/Remove";
 import Add from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct } from "../redux/product";
-import { addCartItem } from "../redux/cart";
+import { fetchProduct, addToCart, STATE_RESET } from "../redux/actions";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [color, setColor] = useState([]);
-  const [size, setSize] = useState();
+  const [color, setColor] = useState("black");
+  const [size, setSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
 
   const product = useSelector((state) => state.product);
@@ -40,7 +39,8 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addCartItem({ ...product, quantity, color, size }));
+    dispatch(addToCart({ ...product, quantity, color, size }));
+    // dispatch({ type: STATE_RESET });
   };
 
   return (
@@ -69,9 +69,15 @@ const Product = () => {
             </div>
             <div className={styles.filter}>
               <span className={styles.filterTitle}>Size</span>
-              <select className={styles.sizeFilter} onChange={handleSize}>
+              <select
+                className={styles.sizeFilter}
+                defaultValue={size}
+                onChange={handleSize}
+              >
                 {product.size?.map((size) => (
-                  <option key={size}>{size}</option>
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
                 ))}
               </select>
             </div>

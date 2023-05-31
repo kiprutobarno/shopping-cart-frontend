@@ -4,6 +4,7 @@ import Remove from "@mui/icons-material/Remove";
 import Add from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from "react-redux";
 import { increaseQuantity, decreaseQuantity } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -26,7 +27,9 @@ const Cart = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Your Bag</h1>
         <div className={styles.top}>
-          <button className={styles.topButton}>Continue Shopping</button>
+          <Link to="/products">
+            <button className={styles.topButton}>Continue Shopping</button>
+          </Link>
           <div>
             <span className={styles.topText}>Shopping Bag (2)</span>
             <span className={styles.topText}>Wishlist (0)</span>
@@ -41,7 +44,7 @@ const Cart = () => {
             {products.map((product, index) => (
               <div className={styles.product} key={index}>
                 <div className={styles.productDetails}>
-                  <img src={product.img} className={styles.img} />
+                  <img src={product?.img} className={styles.img} />
                   <div className={styles.details}>
                     <span>
                       <b>Product:</b> {product.title}

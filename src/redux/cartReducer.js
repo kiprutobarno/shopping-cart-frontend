@@ -24,15 +24,14 @@ export const cartReducer = (state = initialState, action) => {
     case QUANTITY_INCREASED:
       return {
         ...state,
-        products: state.products.map((product) => {
+        products: state.products.map((product, i) => {
           if (product._id !== action.payload._id) {
             return product;
-          } else {
-            return {
-              ...product,
-              quantity: product.quantity + 1,
-            };
           }
+          return {
+            ...product,
+            quantity: product.quantity + 1,
+          };
         }),
         total: (state.total += action.payload.price),
       };
@@ -43,12 +42,11 @@ export const cartReducer = (state = initialState, action) => {
         products: state.products.map((product) => {
           if (product._id !== action.payload._id) {
             return product;
-          } else {
-            return {
-              ...product,
-              quantity: product.quantity - 1,
-            };
           }
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
         }),
         total: (state.total -= action.payload.price),
       };

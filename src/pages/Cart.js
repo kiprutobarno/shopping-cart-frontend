@@ -66,9 +66,9 @@ const Cart = () => {
                     <Remove
                       onClick={() => handleQuantity("decrease", product)}
                     />
-                    <div className={styles.productAmount}>
+                    <span className={styles.productAmount}>
                       {product.quantity}
-                    </div>
+                    </span>
                     <Add onClick={() => handleQuantity("increase", product)} />
                   </div>
                   <div className={styles.productPrice}>

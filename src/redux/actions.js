@@ -58,16 +58,16 @@ export const addToCart = (product) => {
   };
 };
 
-export const increaseQuantity = (product) => {
+export const increaseQuantity = ({ _id, price }) => {
   return {
     type: QUANTITY_INCREASED,
-    payload: product,
+    payload: { _id, price },
   };
 };
 
-export const decreaseQuantity = (product) => {
+export const decreaseQuantity = ({ _id, price }) => {
   return {
     type: QUANTITY_DECREASED,
-    payload: product,
+    payload: { _id, price },
   };
 };

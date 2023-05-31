@@ -7,8 +7,6 @@ import { fetchProducts } from "../redux/actions";
 const Products = () => {
   const products = useSelector((state) => state.products);
 
-  console.log(products);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
